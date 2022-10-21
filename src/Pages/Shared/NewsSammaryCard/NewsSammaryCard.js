@@ -2,28 +2,28 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import Image from 'react-bootstrap/Image'
-import { FaRegBookmark, FaShareAlt } from "react-icons/fa";
+import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from "react-icons/fa";
 
 const NewsSammaryCard = ({ news }) => {
-    const {_id, title, total_view, author, details, image_url} = news;
+    const {_id, title, total_view, rating, author, details, image_url} = news;
     console.log(news);
   return (
-      <Card className="mb-3">
+      <Card className="mb-3 card shadow rounded">
         <Card.Header className="d-flex justify-content-between align-items-center">
             <div className="d-flex">
                 <Image
                 roundedCircle
                 className="me-2"
-                    src={author.img}
+                    src={author?.img}
                     style={{height:"60px"}}
                 ></Image>
                 <div>
-                    <p className="fw-bold">{author.name}</p>
-                    <p><small>{author.published_date}</small></p>
+                    <p className="fw-bold mb-0">{author?.name}</p>
+                    <p className=""><small>{author?.published_date}</small></p>
                 </div>
             </div>
             <div>
-                <FaRegBookmark></FaRegBookmark>
+                <FaRegBookmark className="me-2"></FaRegBookmark>
                 <FaShareAlt></FaShareAlt>
             </div>
         </Card.Header>
@@ -38,7 +38,16 @@ const NewsSammaryCard = ({ news }) => {
             }
           </Card.Text>
         </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
+        <Card.Footer className="text-muted d-flex justify-content-between align-items-center">
+          <div>
+            <FaStar className="text-warning me-2"></FaStar>
+            <span>{rating?.number}</span>
+          </div>
+          <div>
+            <FaEye className="me-2"></FaEye>
+            <span>{total_view}</span>
+          </div>
+        </Card.Footer>
       </Card>
   );
 };
