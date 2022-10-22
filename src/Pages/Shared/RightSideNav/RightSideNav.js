@@ -12,12 +12,30 @@ import {
 } from "react-icons/fa";
 import ListGroup from "react-bootstrap/ListGroup";
 import BrandCarousel from "../BrandCarousel/BrandCarousel";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const RightSideNav = () => {
+
+  const {providerLogin} = useContext(AuthContext);
+
+  const googleProvider = new GoogleAuthProvider()
+
+
+  const handleGoogleSignIn = () =>{
+    providerLogin(googleProvider)
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+    })
+    .catch( error => console.error(error))
+  }
+
   return (
     <div>
       <ButtonGroup vertical>
-        <Button variant="outline-success">
+        <Button onClick={handleGoogleSignIn} variant="outline-success">
           {" "}
           <FaGoogle></FaGoogle> Login With Google
         </Button>
