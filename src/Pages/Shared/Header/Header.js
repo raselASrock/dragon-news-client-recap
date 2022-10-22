@@ -20,7 +20,7 @@ const Header = () => {
   }
   console.log(user);
   return (
-    <Navbar className="mb-4" collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar className="mb-4" collapseOnSelect expand="lg" bg="light" variant="dark">
       <Container>
         <Navbar.Brand><Link to="/">Dragon News</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

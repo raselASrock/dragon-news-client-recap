@@ -17,10 +17,12 @@ const {createUser} = useContext(AuthContext)
         console.log(name,email, password, photoURL);
 
         createUser(email,password)
-        .then(result () =>{
+        .then( result =>{
             const user = result.user;
             console.log(user);
+            form.reset()
         })
+        .catch(error => console.error(error))
 
     }
     return (
